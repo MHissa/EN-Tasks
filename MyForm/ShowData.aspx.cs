@@ -86,7 +86,7 @@ namespace MyForm
         {
             var btn = (Button)sender;
             GridViewRow row = (GridViewRow)btn.NamingContainer;
-            int index = row.RowIndex;
+            int index = row.RowIndex;//test
             dataProvider.DeleteUser(index);
             Page.Response.Redirect(Page.Request.Url.ToString(), false);
 
