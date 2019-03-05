@@ -4,7 +4,7 @@
 
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head runat="server">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>
+  <%--  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css"/>--%>
 
     <!-- jQuery library -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -14,18 +14,24 @@
 
 
     <title></title>
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />
+  <%--  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css" />--%>
 
     <script>
         //window.onblur= function() {window.onfocus= function () {location.reload(true)}};
     </script>
+    <style>
+        .col{
+            padding:3px !important;
+        }
+        *{font-family:Calibri;}
+    </style>
 </head>
 <body>
     <form id="form1" runat="server">
         <div id="dialog" title="Add new user"  style="width: auto"></div>
 
         <asp:LinkButton runat="server"  OnClick="BtnOpen_Click" ID="btnOpen" Text="Add new user"> </asp:LinkButton>
-        <asp:GridView  ID="grdUsers" runat="server" OnRowDataBound="GridViewEvent" >
+        <asp:GridView  ID="grdUsers" runat="server" OnRowDataBound="GridViewEvent" CssClass="table-bordered" CellPadding="3">
             <Columns>
                 <asp:TemplateField>
                     <HeaderTemplate>Edit/Delete</HeaderTemplate>
