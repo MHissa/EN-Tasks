@@ -1,8 +1,10 @@
 ﻿using MyForm.Models;
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Web.Configuration;
+using System.Web.Services;
 
 namespace MyForm
 {
@@ -120,7 +122,15 @@ namespace MyForm
 
         }
 
+        [WebMethod]
+        public string GetUserByID(int userID)
+        {
+            DataRowCollection dRowC = dt.Rows;
+            DataRow userRow= dRowC.Find(userID);
+            string json = JsonConvert.SerializeObject(userRow);
 
+            return json;
+        }
 
         public void EditUser(int pk, object[] updatedData)
         {
