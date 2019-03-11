@@ -21,6 +21,7 @@
                                         $("#slctGender").val(window.gender).change();
                                         $("#slctCampus").val(window.campus).change();
                                         $("#slctLanguage").val(window.language).change();
+                                        $("#txtCurrentDate").val(window.currentDate);
                                         $("#txtExpirationDate").val(window.expiriationDate);
                                         $("#HFID").val(window.id);
                                         $("#HFIsEdit").val(window.isEdit);
@@ -33,9 +34,45 @@
                                     else {
                                         $("#HFID").val(window.rowID);
                                     }
+                                });
+                                function myMethods() {
+                                    debugger;
+                                    var isEdit = false;
+                                    if($("#HFIsEdit").val()!="")
+                                     isEdit = $("#HFIsEdit").val();
+                                    var userinput={
+                                        RecordID : $("#HFID").val(),
+                                        FristName : $("#txtFirstName").val(),
+                                        LastName : $("#txtLastName").val(),
+                                        Title : $("#slctTitle").val(),
+                                        JobCategory : $("#slctJobCategory").val(),
+                                        Gender : $("#slctGender").val(),
+                                        Campus : $("#slctCampus").val(),
+                                        PreferedLanguage : $("#slctLanguage").val(),
+                                        StatusDate : $("#txtCurrentDate").val(),
+                                        ExpriationDate : $("#txtExpirationDate").val(),
+                                        RSL : $("#slctRSL").val(),
+                                        Password : $("#txtPassword").val()
+
+                                    };
+                                    var model = {};
+                                    model.isEdit = isEdit;
+                                    model.userinput= 
+                                    $.ajax({
+                                        type: "POST",
+                                        url: "Default.aspx.cs/Update",
+                                        data: JSON.stringify("{ userinput: " + userinput + ", isEdit: '" + isEdit + "' }"),
+                                        contentType: "application/json; charset=utf-8",
+                                        dataType: "json",
+                                        success: openPage
                                     });
-                                
-                        
+                                    return false;
+                                }
+                                function openPage() {
+                                    var parentUrl = window.opener.location.href;
+                                    window.opener.location.href = parentUrl;
+                                    self.close();
+                                }
                     </script>
 </head>
     
@@ -216,8 +253,7 @@
             <tr>
                 <td></td>
                 <td>
-                    <asp:Button   runat="server" ID="btnSave"  Text="Save"
-                        OnClick="btnSave_Click" Enabled="false" ></asp:Button>
+                    <input id="btnSave" type="button" onclick="myMethods()"  value="Save"   />
                     </td>
                 <td></td>
             </tr>

@@ -85,7 +85,7 @@ namespace MyForm
 
 
             row = ds.Tables["UserInfo"].NewRow();
-            row["First name"] = userInput.Fristname;
+            row["First name"] = userInput.FristName;
             row["Last name"] = userInput.LastName;
             row["Title"] = userInput.Title;
             row["Job category"] = userInput.JobCategory;
@@ -122,15 +122,7 @@ namespace MyForm
 
         }
 
-        [WebMethod]
-        public string GetUserByID(int userID)
-        {
-            DataRowCollection dRowC = dt.Rows;
-            DataRow userRow= dRowC.Find(userID);
-            string json = JsonConvert.SerializeObject(userRow);
 
-            return json;
-        }
 
         public void EditUser(int pk, object[] updatedData)
         {

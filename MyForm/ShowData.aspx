@@ -36,7 +36,7 @@
                 <asp:TemplateField>
                     <HeaderTemplate>Edit/Delete</HeaderTemplate>
                     <ItemTemplate>
-                        <input type="button" class="btn-primary" id="EditRow" value="Edit"  />
+                        <input type="button" class="myButton" id="EditRow" value="Edit"  />
                         <asp:Button ID="DeleteRow" CssClass="btn-danger" Text="Delete" runat="server" OnClick="Delete_Click" />
                     </ItemTemplate>
                 </asp:TemplateField>
@@ -51,11 +51,21 @@
 
             
             });
-                $("#EditRow").click(function () {
-                       debugger;
-                    var row = $(this);
-                    var id = $(row).find("td.btn-primary").text();
-                    return false;
+            $(".myButton").click(function () {
+                     myWindow = window.open('Default.aspx',' List',' toolbar = no, location = no,status = no,menubar = no,scrollbars = yes,resizable = no, width = 700,height = 650,left = 430,top = 0'); 
+                myWindow.id=$(this).closest('tr').find("td").eq(1).text();
+                myWindow.firstName =$(this).closest('tr').find("td").eq(2).text() ;
+                myWindow.lastName = $(this).closest('tr').find("td").eq(3).text();
+                myWindow.title = $(this).closest('tr').find("td").eq(4).text();
+                myWindow.jobCategory = $(this).closest('tr').find("td").eq(5).text();
+                myWindow.gender = $(this).closest('tr').find("td").eq(6).text();
+                myWindow.campus = $(this).closest('tr').find("td").eq(7).text();
+                myWindow.language = $(this).closest('tr').find("td").eq(8).text();
+                myWindow.isEdit = true;
+                myWindow.currentDate = $(this).closest('tr').find("td").eq(9).text();
+                myWindow.expiriationDate = $(this).closest('tr').find("td").eq(10).text();
+                return false;
+                debugger;
                 });
           
         </script>

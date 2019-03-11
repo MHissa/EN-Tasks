@@ -7,7 +7,7 @@ namespace MyForm.Models
 {
     public class UserInput
     {
-        public string Fristname { get; set; }
+        public string FristName { get; set; }
         public string LastName { get; set; }
         public string Title { get; set; }
         public string JobCategory { get; set; }
